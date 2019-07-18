@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="personService" class="test.PersonService" >
+		<property name="message" value="我是Person"/>
+	</bean>
+	<bean id="userService" class="test.UserService">
+		<property name="message" value="我是User"/>
+	</bean>
+	
+	<bean id="ioc" class="test.IocDITest">
+	<property name="username" value="I am IronMan"></property>
+		<property name="idcard" value="2"></property>
+		<property name="playerName">
+			<list>
+				<value>Avengers assemble!!</value>
+				<value>Hail Hydra~</value>
+			</list>
+		</property>
+		<property name="name">
+			<map>
+				<entry key="人" value-ref="personService"></entry>
+				<entry key="用户" value-ref="userService"></entry>
+			</map>
+		</property>
+		<property name="city">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>1</value>
+			</set>
+		</property>
+	</bean>
+	<bean id="con"  class="test.OthersService">
+		<constructor-arg name="name" value="123"></constructor-arg>
+	</bean>
+</beans>
